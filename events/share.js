@@ -23,6 +23,8 @@ export default function share() {
       })
 
       form.reset()
+
+      vanillaToast.success('Success')
     } catch (error) {
       const errorInfo = {
         event: 'log_error',
