@@ -10,6 +10,8 @@ export default function purchase() {
   form.addEventListener('submit', e => {
     try {
       e.preventDefault()
+
+      vanillaToast.success('Success')
     } catch (error) {
       // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
@@ -21,7 +23,11 @@ export default function purchase() {
         page_title: form?.elements['title']?.value || '',
         page_permalink: form?.elements['permalink']?.value || '',
       }
+
       console.log(errorInfo)
+      console.log(error)
+
+      vanillaToast.error(error?.message || 'There was an error. Check Console.')
 
       pushToDataLayer(errorInfo)
     }

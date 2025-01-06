@@ -21,6 +21,8 @@ export default function search() {
       })
 
       form.reset()
+
+      vanillaToast.success('Success')
     } catch (error) {
       const errorInfo = {
         event: 'log_error',
@@ -31,7 +33,11 @@ export default function search() {
         page_title: form?.elements['title']?.value || '',
         page_permalink: form?.elements['permalink']?.value || '',
       }
+
       console.log(errorInfo)
+      console.log(error)
+
+      vanillaToast.error(error?.message || 'There was an error. Check Console.')
 
       pushToDataLayer(errorInfo)
     }

@@ -20,6 +20,8 @@ export default function sign_up() {
       })
 
       form.reset()
+
+      vanillaToast.success('Success')
     } catch (error) {
       // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
@@ -31,7 +33,11 @@ export default function sign_up() {
         page_title: form?.elements['title']?.value || '',
         page_permalink: form?.elements['permalink']?.value || '',
       }
+
       console.log(errorInfo)
+      console.log(error)
+
+      vanillaToast.error(error?.message || 'There was an error. Check Console.')
 
       pushToDataLayer(errorInfo)
     }
