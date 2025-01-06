@@ -1,4 +1,4 @@
-import { generateRandomInteger, getRandomItemFromArray } from '../functions.js'
+import { generateRandomInteger, getRandomItemFromArray, pushToDataLayer } from '../functions.js'
 
 export default function share() {
   const form = document.querySelector('#share-form')
@@ -11,15 +11,11 @@ export default function share() {
     try {
       e.preventDefault()
 
-      // GTM loads dataLayer but we are adding it here just in case
-      const dataLayer = window?.dataLayer || []
-
       const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
       const types = ['blog', 'discount', 'coupon']
 
-      // GTM will be on the lookout for this
-      // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#share
       dataLayer.push({
+        // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#share
         event: 'share', // required
         method: getRandomItemFromArray(methods), // get random item from array
         content_type: getRandomItemFromArray(types), // The type of shared content.
@@ -28,7 +24,6 @@ export default function share() {
 
       form.reset()
     } catch (error) {
-      // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
         event: 'log_error',
         error_message: error?.message || '',
@@ -40,7 +35,7 @@ export default function share() {
       }
       console.log(errorInfo)
 
-      dataLayer.push(errorInfo)
+      pushToDataLayer(errorInfo)
     }
   })
 }

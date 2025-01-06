@@ -1,3 +1,5 @@
+import { getRandomItemFromArray, pushToDataLayer } from '../functions.js'
+
 export default function login() {
   const form = document.querySelector('#login-form')
 
@@ -6,20 +8,32 @@ export default function login() {
   }
 
   form.addEventListener('submit', e => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    // GTM loads dataLayer but we are adding it here just in case
-    const dataLayer = window?.dataLayer || []
+      const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
 
-    const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
+      pushToDataLayer({
+        // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#login
+        event: 'login', // required
+        method: getRandomItemFromArray(methods), // string|optional
+      })
 
-    // GTM will be on the lookout for this
-    // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#login
-    dataLayer.push({
-      event: 'login', // required
-      method: methods[Math.floor(Math.random() * methods.length)], // get random item from array
-    })
+      form.reset()
+    } catch (error) {
+      // Adding to dataLayer so that GTM can pick it up
+      const errorInfo = {
+        event: 'log_error',
+        error_message: error?.message || '',
+        error_stack: error?.stack || '',
+        form_id: form?.id || '',
+        form_name: form?.name || '',
+        page_title: form?.elements['title']?.value || '',
+        page_permalink: form?.elements['permalink']?.value || '',
+      }
+      console.log(errorInfo)
 
-    form.reset()
+      pushToDataLayer(errorInfo)
+    }
   })
 }

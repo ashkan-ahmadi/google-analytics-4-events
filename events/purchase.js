@@ -1,3 +1,5 @@
+import { getRandomItemFromArray, pushToDataLayer } from '../functions.js'
+
 export default function purchase() {
   const form = document.querySelector('#purchase-form')
 
@@ -6,9 +8,22 @@ export default function purchase() {
   }
 
   form.addEventListener('submit', e => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
+    } catch (error) {
+      // Adding to dataLayer so that GTM can pick it up
+      const errorInfo = {
+        event: 'log_error',
+        error_message: error?.message || '',
+        error_stack: error?.stack || '',
+        form_id: form?.id || '',
+        form_name: form?.name || '',
+        page_title: form?.elements['title']?.value || '',
+        page_permalink: form?.elements['permalink']?.value || '',
+      }
+      console.log(errorInfo)
 
-    // GTM loads dataLayer but we are adding it here just in case
-    const dataLayer = window?.dataLayer || []
+      pushToDataLayer(errorInfo)
+    }
   })
 }

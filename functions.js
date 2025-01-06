@@ -24,3 +24,9 @@ export function generateRandomInteger(min = 1, max = 100) {
 export function getRandomItemFromArray(array) {
   return array[Math.floor(Math.random() * array.length)]
 }
+
+export function pushToDataLayer(obj) {
+  const dataLayer = window?.dataLayer || []
+
+  dataLayer.push(obj)
+}
