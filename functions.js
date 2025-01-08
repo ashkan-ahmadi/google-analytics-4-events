@@ -32,7 +32,7 @@ export function pushToDataLayer(obj) {
 }
 
 // Toastify API: https://github.com/apvarun/toastify-js/blob/master/README.md#api
-export default async function showToast(text, opts = {}) {
+export function showToast(text, opts = {}) {
   const defaultOptions = {
     text: text || 'Toast', // Message to be displayed in the toast
     duration: 5000, // Duration for which the toast should be displayed. -1 for permanent toast
