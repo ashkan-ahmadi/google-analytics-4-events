@@ -1,0 +1,1 @@
+- Handle 'log_error' custom event. Make sure all its custom parameters are registered as Custom Dimensions
