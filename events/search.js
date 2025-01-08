@@ -37,7 +37,7 @@ export default function search() {
       console.log(errorInfo)
       console.log(error)
 
-      vanillaToast.error(error?.message || 'There was an error. Check Console.')
+      showToast(error?.message || 'There was an error. Check Console.')
 
       pushToDataLayer(errorInfo)
     }

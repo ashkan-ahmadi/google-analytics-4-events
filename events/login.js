@@ -10,7 +10,6 @@ export default function login() {
   form.addEventListener('submit', e => {
     try {
       e.preventDefault()
-
       const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
 
       pushToDataLayer({
@@ -37,7 +36,7 @@ export default function login() {
       console.log(errorInfo)
       console.log(error)
 
-      vanillaToast.error(error?.message || 'There was an error. Check Console.')
+      showToast(error?.message || 'There was an error. Check Console.')
       pushToDataLayer(errorInfo)
     }
   })
