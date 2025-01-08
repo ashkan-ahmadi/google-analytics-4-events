@@ -30,3 +30,36 @@ export function pushToDataLayer(obj) {
 
   dataLayer.push(obj)
 }
+
+// Toastify API: https://github.com/apvarun/toastify-js/blob/master/README.md#api
+export default async function showToast(text, opts = {}) {
+  const defaultOptions = {
+    text: text || 'Toast', // Message to be displayed in the toast
+    duration: 3000, // Duration for which the toast should be displayed. -1 for permanent toast
+    destination: '', // URL to which the browser should be navigated on click of the toast
+    newWindow: true, // Decides whether the `destination` should be opened in a new window or not
+    close: false, // To show the close icon or not
+    gravity: 'bottom', // To show the toast from top or bottom: top|bottom
+    position: 'center', // To show the toast on left or right: left|center|right
+    stopOnFocus: false, // Prevents dismissing of toast on hover
+    className: '', // Ability to provide custom class name for further customization
+    style: {
+      // Use the HTML DOM Style properties to add any style directly to toast
+      background: 'var(--bs-primary-bg-subtle)',
+      border: 'var(--bs-border-width) solid var(--bs-primary-border-subtle)',
+      color: 'var(--bs-gray-dark)',
+      boxShadow: 'none',
+      borderRadius: 'var(--bs-border-radius)',
+    },
+    onClick: false, // Invoked when the toast is clicked
+    callback: false, // Invoked when the toast is dismissed
+    oldestFirst: true, // Set the order in which toasts are stacked in page
+    ariaLive: 'polite', // Announce the toast to screen readers
+    escapeMarkup: true, // Toggle the default behavior of escaping HTML markup
+    offset: {}, // 	Ability to add some offset to axis
+  }
+
+  const options = { ...defaultOptions, ...opts }
+
+  Toastify(options).showToast()
+}
