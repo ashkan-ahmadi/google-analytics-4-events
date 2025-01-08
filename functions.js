@@ -35,7 +35,7 @@ export function pushToDataLayer(obj) {
 export default async function showToast(text, opts = {}) {
   const defaultOptions = {
     text: text || 'Toast', // Message to be displayed in the toast
-    duration: 3000, // Duration for which the toast should be displayed. -1 for permanent toast
+    duration: 5000, // Duration for which the toast should be displayed. -1 for permanent toast
     destination: '', // URL to which the browser should be navigated on click of the toast
     newWindow: true, // Decides whether the `destination` should be opened in a new window or not
     close: false, // To show the close icon or not
@@ -45,8 +45,8 @@ export default async function showToast(text, opts = {}) {
     className: '', // Ability to provide custom class name for further customization
     style: {
       // Use the HTML DOM Style properties to add any style directly to toast
-      background: 'var(--bs-primary-bg-subtle)',
-      border: 'var(--bs-border-width) solid var(--bs-primary-border-subtle)',
+      background: 'var(--bs-success-bg-subtle)',
+      border: 'var(--bs-border-width) solid var(--bs-success-border-subtle)',
       color: 'var(--bs-gray-dark)',
       boxShadow: 'none',
       borderRadius: 'var(--bs-border-radius)',
