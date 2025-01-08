@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, pushToDataLayer } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
 
 export default function purchase() {
   const form = document.querySelector('#purchase-form')
@@ -11,7 +11,7 @@ export default function purchase() {
     try {
       e.preventDefault()
 
-      vanillaToast.success('Success')
+      showToast('Success')
     } catch (error) {
       // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {

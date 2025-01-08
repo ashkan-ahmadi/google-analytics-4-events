@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, pushToDataLayer } from '../functions.js'
+import { pushToDataLayer, showToast } from '../functions.js'
 
 export default function search() {
   const form = document.querySelector('#search-form')
@@ -22,7 +22,7 @@ export default function search() {
 
       form.reset()
 
-      vanillaToast.success('Success')
+      showToast('Success')
     } catch (error) {
       const errorInfo = {
         event: 'log_error',

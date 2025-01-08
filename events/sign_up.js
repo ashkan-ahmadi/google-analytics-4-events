@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, pushToDataLayer } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
 
 export default function sign_up() {
   const form = document.querySelector('#sign_up-form')
@@ -21,7 +21,7 @@ export default function sign_up() {
 
       form.reset()
 
-      vanillaToast.success('Success')
+      showToast('Success')
     } catch (error) {
       // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
