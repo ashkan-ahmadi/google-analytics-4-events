@@ -12,14 +12,15 @@ export default function share() {
       e.preventDefault()
 
       const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
-      const types = ['blog', 'discount', 'coupon']
+      const types = ['blog', 'discount', 'coupon', 'product', 'page']
+      const id = generateRandomInteger()
 
       dataLayer.push({
         // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#share
         event: 'share', // required
         method: getRandomItemFromArray(methods), // get random item from array
         content_type: getRandomItemFromArray(types), // The type of shared content.
-        item_id: generateRandomInteger(),
+        item_id: id,
       })
 
       form.reset()
