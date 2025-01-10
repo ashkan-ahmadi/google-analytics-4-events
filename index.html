@@ -135,6 +135,30 @@
       </div>
     </div>
 
+
+    <hr>
+
+    <div class="card bg-light">
+      <div class="card-body">
+        <h2 class="card-title">Select Content</h2>
+
+        <form id="select_content-form" name="Select Content">
+          <button type="submit" class="btn btn-primary">Select Content</button>
+        </form>
+
+
+        <h3>Parameters:</h3>
+
+        <p>This event takes 2 optional built-in parameters: (<a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#select_content" target="_blank" rel="noopener noreferrer">More information</a>).</p>
+        <ul>
+          <li><code>content_id</code>: type string, example: 32 | CA_37eb | SKU3237</li>
+          <li><code>content_type</code>: type string, example: image | blog | discount | coupon_code | product</li>
+        </ul>
+        <p>On GTM, we need 2 Data Layer Variable variables: <code>content_id</code> and <code>content_type</code>.</p>
+        <p>Since this is a built-in event with built-in parameter(s), we do NOT need to create any Custom Dimensions.</p>
+      </div>
+    </div>
+
     <hr>
 
     <div class="card bg-light">
