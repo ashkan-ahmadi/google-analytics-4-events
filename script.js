@@ -9,3 +9,6 @@ login()
 
 import share from './events/share.js'
 share()
+
+import select_content from './events/select_content.js'
+select_content()

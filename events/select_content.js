@@ -10,6 +10,7 @@ export default function select_content() {
   form.addEventListener('submit', e => {
     try {
       e.preventDefault()
+
       const types = ['blog', 'discount', 'coupon', 'product', 'page']
       const id = generateRandomInteger()
 
