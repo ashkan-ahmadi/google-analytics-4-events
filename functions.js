@@ -63,3 +63,7 @@ export function showToast(text, opts = {}) {
 
   Toastify(options).showToast()
 }
+
+export function generateRandomUUID() {
+  return window?.crypto?.randomUUID()
+}
