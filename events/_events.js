@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, pushToDataLayer, showToast, generateRandomInteger } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast, generateRandomInteger, generateRandomUUID } from '../functions.js'
 
 export default function handleEvents() {
   const forms = document.querySelectorAll('form')
@@ -35,6 +35,7 @@ export default function handleEvents() {
         const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
         const content_types = ['blog', 'discount', 'coupon', 'product', 'page']
         const id = generateRandomInteger()
+        const uuid = generateRandomUUID()
 
         let dataLayerObject = null
 
@@ -61,7 +62,7 @@ export default function handleEvents() {
             dataLayerObject = {
               event: eventName,
               content_type: getRandomItemFromArray(content_types),
-              content_id: id,
+              content_id: uuid,
             }
             break
 
