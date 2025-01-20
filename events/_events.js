@@ -71,7 +71,7 @@ export default function handleEvents() {
               event: eventName,
               method: getRandomItemFromArray(methods),
               content_type: getRandomItemFromArray(content_types),
-              item_id: id,
+              item_id: uuid,
             }
             break
 
