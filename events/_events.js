@@ -18,6 +18,7 @@ export default function handleEvents() {
           throw Error(`Event name not found on form.`)
         }
 
+        // these are standard built-in events. if you want to accept any other event, disable this
         // prettier-ignore
         const acceptableEventNames = [
           'login',
@@ -25,7 +26,9 @@ export default function handleEvents() {
           'search',
           'select_content',
           'share',
-          'sign_up'
+          'sign_up',
+          'tutorial_begin',
+          'tutorial_complete'
         ]
 
         if (!acceptableEventNames.includes(eventName)) {
@@ -82,13 +85,19 @@ export default function handleEvents() {
             }
             break
 
-          // case '':
-          //   dataLayerObject =
-          //   break
+          case 'tutorial_begin':
+            // There are no parameters for this event.
+            dataLayerObject = {
+              event: eventName,
+            }
+            break
 
-          // case '':
-          //   dataLayerObject =
-          //   break
+          case 'tutorial_complete':
+            // There are no parameters for this event.
+            dataLayerObject = {
+              event: eventName,
+            }
+            break
 
           // case '':
           //   dataLayerObject =
