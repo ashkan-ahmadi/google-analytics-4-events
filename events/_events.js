@@ -37,8 +37,8 @@ export default function handleEvents() {
 
         const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
         const content_types = ['blog', 'discount', 'coupon', 'product', 'page']
-        const id = generateRandomInteger()
-        const uuid = generateRandomUUID()
+        const randomInteger = generateRandomInteger()
+        const randomUUID = generateRandomUUID()
 
         let dataLayerObject = null
 
@@ -65,7 +65,7 @@ export default function handleEvents() {
             dataLayerObject = {
               event: eventName,
               content_type: getRandomItemFromArray(content_types),
-              content_id: uuid,
+              content_id: randomUUID,
             }
             break
 
@@ -74,7 +74,7 @@ export default function handleEvents() {
               event: eventName,
               method: getRandomItemFromArray(methods),
               content_type: getRandomItemFromArray(content_types),
-              item_id: uuid,
+              item_id: randomUUID,
             }
             break
 
