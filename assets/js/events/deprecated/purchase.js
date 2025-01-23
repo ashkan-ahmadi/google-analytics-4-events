@@ -1,7 +1,7 @@
-import { pushToDataLayer, showToast } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast } from '../../functions.js'
 
-export default function search() {
-  const form = document.querySelector('#search-form')
+export default function purchase() {
+  const form = document.querySelector('#purchase-form')
 
   if (!form) {
     return
@@ -11,19 +11,9 @@ export default function search() {
     try {
       e.preventDefault()
 
-      const searchValue = form?.elements?.search?.value || ''
-      const regionValue = form?.elements?.region?.value || ''
-
-      pushToDataLayer({
-        event: 'search', // required
-        search_term: searchValue, // string|required
-        region: regionValue, // string|optional - read index.html for info on Custom Dimensions
-      })
-
-      form.reset()
-
       showToast('Success')
     } catch (error) {
+      // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
         event: 'log_error',
         error_message: error?.message || '',

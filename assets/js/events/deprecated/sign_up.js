@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast } from '../../functions.js'
 
 export default function sign_up() {
   const form = document.querySelector('#sign_up-form')

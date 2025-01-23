@@ -1,7 +1,7 @@
-import { generateRandomInteger, getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
+import { getRandomItemFromArray, pushToDataLayer, showToast } from '../../functions.js'
 
-export default function select_content() {
-  const form = document.querySelector('#select_content-form')
+export default function login() {
+  const form = document.querySelector('#login-form')
 
   if (!form) {
     return
@@ -10,15 +10,12 @@ export default function select_content() {
   form.addEventListener('submit', e => {
     try {
       e.preventDefault()
-
-      const types = ['blog', 'discount', 'coupon', 'product', 'page']
-      const id = generateRandomInteger()
+      const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
 
       pushToDataLayer({
-        // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#select_content
-        event: 'select_content', // required
-        content_type: getRandomItemFromArray(types), // string|optional
-        content_id: id,
+        // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#login
+        event: 'login', // required
+        method: getRandomItemFromArray(methods), // string|optional
       })
 
       form.reset()

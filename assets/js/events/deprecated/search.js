@@ -1,7 +1,7 @@
-import { getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
+import { pushToDataLayer, showToast } from '../../functions.js'
 
-export default function login() {
-  const form = document.querySelector('#login-form')
+export default function search() {
+  const form = document.querySelector('#search-form')
 
   if (!form) {
     return
@@ -10,19 +10,20 @@ export default function login() {
   form.addEventListener('submit', e => {
     try {
       e.preventDefault()
-      const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
+
+      const searchValue = form?.elements?.search?.value || ''
+      const regionValue = form?.elements?.region?.value || ''
 
       pushToDataLayer({
-        // https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#login
-        event: 'login', // required
-        method: getRandomItemFromArray(methods), // string|optional
+        event: 'search', // required
+        search_term: searchValue, // string|required
+        region: regionValue, // string|optional - read index.html for info on Custom Dimensions
       })
 
       form.reset()
 
       showToast('Success')
     } catch (error) {
-      // Adding to dataLayer so that GTM can pick it up
       const errorInfo = {
         event: 'log_error',
         error_message: error?.message || '',
@@ -37,6 +38,7 @@ export default function login() {
       console.log(error)
 
       showToast(error?.message || 'There was an error. Check Console.')
+
       pushToDataLayer(errorInfo)
     }
   })

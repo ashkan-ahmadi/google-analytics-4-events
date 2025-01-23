@@ -1,4 +1,4 @@
-import { generateRandomInteger, getRandomItemFromArray, pushToDataLayer, showToast } from '../functions.js'
+import { generateRandomInteger, getRandomItemFromArray, pushToDataLayer, showToast } from '../../functions.js'
 
 export default function share() {
   const form = document.querySelector('#share-form')
