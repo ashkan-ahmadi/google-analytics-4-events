@@ -24,6 +24,7 @@ export default function handleEvents() {
           'add_to_cart',
           'login',
           // 'purchase',
+          'remove_from_cart',
           'search',
           'select_content',
           'share',
@@ -68,6 +69,22 @@ export default function handleEvents() {
             }
             break
 
+          case 'remove_from_cart':
+            dataLayerObject = {
+              event: eventName,
+              currency: 'EUR',
+              value: 450,
+              items: [
+                {
+                  item_id: 'item_id_5211',
+                  item_name: 'Trip to Paris',
+                  price: 450,
+                  discount: 50,
+                  quantity: 1,
+                },
+              ],
+            }
+            break
           case 'search':
             const searchValue = form?.elements?.search?.value || ''
             const regionValue = form?.elements?.region?.value || ''
