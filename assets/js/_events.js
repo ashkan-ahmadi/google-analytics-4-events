@@ -10,6 +10,7 @@ import create_datalayer___share from './events/share.js'
 import create_datalayer___sign_up from './events/sign_up.js'
 import create_datalayer___tutorial_begin from './events/tutorial_begin.js'
 import create_datalayer___tutorial_complete from './events/tutorial_complete.js'
+import create_datalayer___exception from './events/exception.js'
 
 export default function handleEvents() {
   const forms = document.querySelectorAll('form')
@@ -29,26 +30,7 @@ export default function handleEvents() {
           throw Error(`Event name not found on form.`)
         }
 
-        // these are standard built-in events. if you want to accept any other event, disable this
-        // prettier-ignore
-        const acceptableEventNames = [
-          'add_to_cart',
-          'login',
-          // 'purchase',
-          'remove_from_cart',
-          'search',
-          'select_content',
-          'share',
-          'sign_up',
-          'tutorial_begin',
-          'tutorial_complete',
-        ]
-
-        if (!acceptableEventNames.includes(eventName)) {
-          throw Error('Unrecognized event name')
-        }
-
-        let dataLayerObject = null
+        let dataLayerObject = {}
 
         switch (eventName) {
           case 'add_to_cart':
@@ -100,22 +82,15 @@ export default function handleEvents() {
 
         showToast('Success')
       } catch (error) {
-        // Adding to dataLayer so that GTM can pick it up
-        const errorInfo = {
-          event: 'log_error',
-          error_message: error?.message || '',
-          error_stack: error?.stack || '',
-          form_id: form?.id || '',
-          form_name: form?.name || '',
-          page_title: form?.elements['title']?.value || '',
-          page_permalink: form?.elements['permalink']?.value || '',
-        }
+        let dataLayerObject = {}
+        const eventName = 'exception'
 
-        console.log(errorInfo)
-        console.log(error)
+        console.error(error)
 
+        dataLayerObject = create_datalayer___exception(dataLayerObject, eventName, error, form)
+
+        pushToDataLayer(dataLayerObject)
         showToast(error?.message || 'There was an error. Check Console.')
-        pushToDataLayer(errorInfo)
       }
     })
   })
