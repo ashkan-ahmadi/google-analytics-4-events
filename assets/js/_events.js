@@ -1,15 +1,15 @@
-import { pushToDataLayer, showToast } from '../functions.js'
+import { pushToDataLayer, showToast } from './functions.js'
 
 // EVENTS
-import create_datalayer___add_to_cart from './add_to_cart.js'
-import create_datalayer___login from './login.js'
-import create_datalayer___remove_from_cart from './remove_from_cart.js'
-import create_datalayer___search from './search.js'
-import create_datalayer___select_content from './select_content.js'
-import create_datalayer___share from './share.js'
-import create_datalayer___sign_up from './sign_up.js'
-import create_datalayer___tutorial_begin from './tutorial_begin.js'
-import create_datalayer___tutorial_complete from './tutorial_complete.js'
+import create_datalayer___add_to_cart from './events/add_to_cart.js'
+import create_datalayer___login from './events/login.js'
+import create_datalayer___remove_from_cart from './events/remove_from_cart.js'
+import create_datalayer___search from './events/search.js'
+import create_datalayer___select_content from './events/select_content.js'
+import create_datalayer___share from './events/share.js'
+import create_datalayer___sign_up from './events/sign_up.js'
+import create_datalayer___tutorial_begin from './events/tutorial_begin.js'
+import create_datalayer___tutorial_complete from './events/tutorial_complete.js'
 
 export default function handleEvents() {
   const forms = document.querySelectorAll('form')
