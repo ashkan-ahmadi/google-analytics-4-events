@@ -1,4 +1,15 @@
-import { getRandomItemFromArray, pushToDataLayer, showToast, generateRandomInteger, generateRandomUUID } from '../functions.js'
+import { pushToDataLayer, showToast } from '../functions.js'
+
+// EVENTS
+import create_datalayer___add_to_cart from './add_to_cart.js'
+import create_datalayer___login from './login.js'
+import create_datalayer___remove_from_cart from './remove_from_cart.js'
+import create_datalayer___search from './search.js'
+import create_datalayer___select_content from './select_content.js'
+import create_datalayer___share from './share.js'
+import create_datalayer___sign_up from './sign_up.js'
+import create_datalayer___tutorial_begin from './tutorial_begin.js'
+import create_datalayer___tutorial_complete from './tutorial_complete.js'
 
 export default function handleEvents() {
   const forms = document.querySelectorAll('form')
@@ -37,106 +48,46 @@ export default function handleEvents() {
           throw Error('Unrecognized event name')
         }
 
-        const methods = ['Email', 'Google', 'Facebook', 'Twitter/X', 'LinkedIn', 'Apple']
-        const content_types = ['blog', 'discount', 'coupon', 'product', 'page']
-        const randomInteger = generateRandomInteger()
-        const randomUUID = generateRandomUUID()
-
         let dataLayerObject = null
 
         switch (eventName) {
           case 'add_to_cart':
-            dataLayerObject = {
-              event: eventName,
-              currency: 'EUR',
-              value: 450,
-              items: [
-                {
-                  item_id: 'item_id_5211',
-                  item_name: 'Trip to Paris',
-                  price: 450,
-                  discount: 50,
-                  quantity: 1,
-                },
-              ],
-            }
+            dataLayerObject = create_datalayer___add_to_cart(dataLayerObject, eventName)
             break
 
           case 'login':
-            dataLayerObject = {
-              event: eventName,
-              method: getRandomItemFromArray(methods), // string|optional
-            }
+            dataLayerObject = create_datalayer___login(dataLayerObject, eventName)
             break
 
           case 'remove_from_cart':
-            dataLayerObject = {
-              event: eventName,
-              currency: 'EUR',
-              value: 450,
-              items: [
-                {
-                  item_id: 'item_id_5211',
-                  item_name: 'Trip to Paris',
-                  price: 450,
-                  discount: 50,
-                  quantity: 1,
-                },
-              ],
-            }
+            dataLayerObject = create_datalayer___remove_from_cart(dataLayerObject, eventName)
             break
+
           case 'search':
             const searchValue = form?.elements?.search?.value || ''
             const regionValue = form?.elements?.region?.value || ''
-
-            dataLayerObject = {
-              event: eventName,
-              search_term: searchValue,
-              region: regionValue, // custom parameter/dimension
-            }
+            dataLayerObject = create_datalayer___search(dataLayerObject, eventName, searchValue, regionValue)
             break
 
           case 'select_content':
-            dataLayerObject = {
-              event: eventName,
-              content_type: getRandomItemFromArray(content_types),
-              content_id: randomUUID,
-            }
+            dataLayerObject = create_datalayer___select_content(dataLayerObject, eventName)
             break
 
           case 'share':
-            dataLayerObject = {
-              event: eventName,
-              method: getRandomItemFromArray(methods),
-              content_type: getRandomItemFromArray(content_types),
-              item_id: randomUUID,
-            }
+            dataLayerObject = create_datalayer___share(dataLayerObject, eventName)
             break
 
           case 'sign_up':
-            dataLayerObject = {
-              event: eventName,
-              method: getRandomItemFromArray(methods),
-            }
+            dataLayerObject = create_datalayer___sign_up(dataLayerObject, eventName)
             break
 
           case 'tutorial_begin':
-            // There are no parameters for this event.
-            dataLayerObject = {
-              event: eventName,
-            }
+            dataLayerObject = create_datalayer___tutorial_begin(dataLayerObject, eventName)
             break
 
           case 'tutorial_complete':
-            // There are no parameters for this event.
-            dataLayerObject = {
-              event: eventName,
-            }
+            dataLayerObject = create_datalayer___tutorial_complete(dataLayerObject, eventName)
             break
-
-          // case '':
-          //   dataLayerObject =
-          //   break
         }
 
         if (Object.keys(dataLayerObject).length === 0) {
