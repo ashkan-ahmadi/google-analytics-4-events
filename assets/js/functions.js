@@ -67,3 +67,14 @@ export function showToast(text, opts = {}) {
 export function generateRandomUUID() {
   return window?.crypto?.randomUUID()
 }
+
+// This is a common function used to push google information
+// This is often used as an object with 3 parameters:
+// 1. what you want to target, for example: event|config
+// 2. the value of the target, e.g. purchase|select_content
+// 3. an object with other info depending on the value. usually an event has extra parameters
+// What is gtag.js?
+// gtag.js is a JavaScript tagging framework that allows you to send data from your site to Google measurement products. To set up gtag.js, you add 1 snippet of code to each page of your website. To use the gtag.js effectively, you need to be comfortable changing the code on your site using JavaScript.
+export function gtag() {
+  dataLayer.push(arguments)
+}
