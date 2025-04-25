@@ -192,6 +192,31 @@
       </div>
     </div>
 
+
+    <hr>
+
+    <!-- add_to_cart -->
+    <div class="card bg-light">
+      <div class="card-body">
+        <h2 class="card-title">Add to cart</h2>
+
+        <form id="login-form" name="Login" data-event-name="add_to_cart">
+          <button type="submit" class="btn btn-primary">Add products to cart</button>
+        </form>
+
+        <h3>Parameters:</h3>
+
+        <p>This event takes 3 required built-in parameter:</p>
+        <ul>
+          <li><code>currency</code>: string - required if <code>value</code> is set</li>
+          <li><code>value</code>: string - required if <code>currency</code> is set</li>
+          <li><code>items</code>: array of objects - required</li>
+        </ul>
+        <p>Since this is a built-in event with built-in parameter(s), we do NOT need to create any Custom Dimensions.</p>
+        <a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=16304408777889371420-EU&client_type=gtm#add_to_cart" target="_blank" rel="noopener noreferrer">More information</a>
+      </div>
+    </div>
+
     <hr>
 
     <!-- Purchase -->
