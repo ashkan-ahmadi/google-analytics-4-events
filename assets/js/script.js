@@ -1,2 +1,2 @@
-import handleEvents from './events/_events.js'
+import handleEvents from './_events.js'
 handleEvents()
