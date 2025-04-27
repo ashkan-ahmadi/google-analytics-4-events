@@ -29,6 +29,7 @@ export default function create_datalayer___purchase(dataLayerObject, eventName) 
     currency: 'EUR',
     value: value,
     items: items,
+    transaction_id: generateRandomUUID(),
   }
 
   return dataLayerObject
