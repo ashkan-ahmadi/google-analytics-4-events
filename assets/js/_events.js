@@ -35,6 +35,8 @@ export default function handleEvents() {
 
         switch (eventName) {
           case 'add_to_cart':
+            pushToDataLayer({ ecommerce: null }) // Clear the previous ecommerce object.
+
             dataLayerObject = create_datalayer___add_to_cart(dataLayerObject, eventName)
             break
 
@@ -43,10 +45,14 @@ export default function handleEvents() {
             break
 
           case 'purchase':
+            pushToDataLayer({ ecommerce: null }) // Clear the previous ecommerce object.
+
             dataLayerObject = create_datalayer___purchase(dataLayerObject, eventName)
             break
 
           case 'remove_from_cart':
+            pushToDataLayer({ ecommerce: null }) // Clear the previous ecommerce object.
+
             dataLayerObject = create_datalayer___remove_from_cart(dataLayerObject, eventName)
             break
 
