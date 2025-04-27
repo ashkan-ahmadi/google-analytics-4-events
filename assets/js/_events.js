@@ -11,6 +11,7 @@ import create_datalayer___sign_up from './events/sign_up.js'
 import create_datalayer___tutorial_begin from './events/tutorial_begin.js'
 import create_datalayer___tutorial_complete from './events/tutorial_complete.js'
 import create_datalayer___exception from './events/exception.js'
+import create_datalayer___purchase from './events/purchase.js'
 
 export default function handleEvents() {
   const forms = document.querySelectorAll('form')
@@ -39,6 +40,10 @@ export default function handleEvents() {
 
           case 'login':
             dataLayerObject = create_datalayer___login(dataLayerObject, eventName)
+            break
+
+          case 'purchase':
+            dataLayerObject = create_datalayer___purchase(dataLayerObject, eventName)
             break
 
           case 'remove_from_cart':
