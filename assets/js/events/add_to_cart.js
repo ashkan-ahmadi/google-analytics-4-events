@@ -15,8 +15,8 @@ export default function create_datalayer___add_to_cart(dataLayerObject, eventNam
       item_id: generateRandomUUID(),
       item_name: 'Trip to Vienna',
       item_category: 'trip',
-      price: 500,
-      quantity: 2,
+      price: generateRandomInteger(100, 1000),
+      quantity: generateRandomInteger(1, 5),
     },
   ]
 

@@ -1,5 +1,5 @@
 import { content_types, methods } from '../constants.js'
-import { generateRandomUUID, getRandomItemFromArray } from '../functions.js'
+import { generateRandomInteger, generateRandomUUID, getRandomItemFromArray } from '../functions.js'
 
 export default function create_datalayer___remove_from_cart(dataLayerObject, eventName) {
   const items = [
@@ -15,8 +15,8 @@ export default function create_datalayer___remove_from_cart(dataLayerObject, eve
       item_id: generateRandomUUID(),
       item_name: 'Trip to Vienna',
       item_category: 'trip',
-      price: 500,
-      quantity: 2,
+      price: generateRandomInteger(100, 1000),
+      quantity: generateRandomInteger(1, 5),
     },
   ]
 
