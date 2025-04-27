@@ -1,5 +1,5 @@
 import { content_types, methods } from '../constants.js'
-import { generateRandomUUID, getRandomItemFromArray } from '../functions.js'
+import { generateRandomInteger, generateRandomUUID, getRandomItemFromArray } from '../functions.js'
 
 export default function create_datalayer___add_to_cart(dataLayerObject, eventName) {
   const items = [
