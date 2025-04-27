@@ -4,7 +4,7 @@ import { generateRandomInteger, generateRandomUUID, getRandomItemFromArray } fro
 export default function create_datalayer___purchase(dataLayerObject, eventName) {
   const items = [
     {
-      item_id: generateRandomUUID(),
+      item_id: 'TRIP_TO_PARIS',
       item_name: 'Trip to Paris',
       item_category: 'trip',
       price: 450,
@@ -12,11 +12,11 @@ export default function create_datalayer___purchase(dataLayerObject, eventName) 
       quantity: 1,
     },
     {
-      item_id: generateRandomUUID(),
+      item_id: 'TRIP_TO_VIENNA',
       item_name: 'Trip to Vienna',
       item_category: 'trip',
-      price: generateRandomInteger(100, 1000),
-      quantity: generateRandomInteger(1, 5),
+      price: 500,
+      quantity: 1,
     },
   ]
 
