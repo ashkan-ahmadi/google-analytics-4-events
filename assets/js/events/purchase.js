@@ -1,5 +1,4 @@
-import { content_types, methods } from '../constants.js'
-import { generateRandomInteger, generateRandomUUID, getRandomItemFromArray } from '../functions.js'
+import { generateRandomUUID } from '../functions.js'
 
 export default function create_datalayer___purchase(dataLayerObject, eventName) {
   const items = [
@@ -26,10 +25,12 @@ export default function create_datalayer___purchase(dataLayerObject, eventName) 
 
   dataLayerObject = {
     event: eventName,
-    currency: 'EUR',
-    value: value,
-    items: items,
-    transaction_id: generateRandomUUID(),
+    ecommerce: {
+      currency: 'EUR',
+      value: value,
+      items: items,
+      transaction_id: generateRandomUUID(),
+    },
   }
 
   return dataLayerObject
