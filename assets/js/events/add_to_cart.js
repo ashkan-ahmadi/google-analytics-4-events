@@ -1,6 +1,3 @@
-import { content_types, methods } from '../constants.js'
-import { generateRandomInteger, generateRandomUUID, getRandomItemFromArray } from '../functions.js'
-
 export default function create_datalayer___add_to_cart(dataLayerObject, eventName) {
   const items = [
     {
@@ -26,9 +23,11 @@ export default function create_datalayer___add_to_cart(dataLayerObject, eventNam
 
   dataLayerObject = {
     event: eventName,
-    currency: 'EUR',
-    value: value,
-    items: items,
+    ecommerce: {
+      currency: 'EUR',
+      value: value,
+      items: items,
+    },
   }
 
   return dataLayerObject
