@@ -1,5 +1,7 @@
 # Google Analytics 4 Events
 
+DEMO: https://ashkan-ahmadi.github.io/google-analytics-4-events/
+
 You don't need to run any Webpack. Just right-click index.html and select Open With Live Server.
 
 ## Useful links:
